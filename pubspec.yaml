@@ -6,7 +6,7 @@ version: 0.0.1+1
 
 environment:
   sdk: ">=3.0.5 <4.0.0"
-  flutter: ">=3.10.5 <4.0.0"
+  flutter: ">=3.22.0 <4.0.0"
 
 dependencies:
   # Flutter SDK
@@ -34,12 +34,10 @@ dependencies:
 
   # Persisting
   shared_preferences: ^2.2.2
-  drift: ^2.13.1
-  sqlite3_flutter_libs: ^0.5.18
 
   # Logging
   stack_trace: ^1.11.0
-  sentry_flutter: ^8.1.0
+  sentry_flutter: 8.3.0
 
   # Utils
   platform_info: ^4.0.2
@@ -48,13 +46,18 @@ dependencies:
   intercepted_client: ^0.0.1
   mockito: ^5.4.4
   clock: ^1.1.1
+  json_annotation: 4.8.1
+  freezed_annotation: 2.4.1
 
+  flutter_blue_plus: 1.32.8
+  auto_route: 7.8.4
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   auto_route_generator: 7.3.2
-  build_runner: ^2.2.0
+  build_runner: 2.4.6
   flutter_lints: ^2.0.1
   json_serializable: ^6.6.1
   freezed: ^2.4.5

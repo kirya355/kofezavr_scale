@@ -5,9 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:kofezavr_scale/src/core/utils/refined_logger.dart';
 
-/// {@template error_tracking_manager}
 /// A class which is responsible for enabling error tracking.
-/// {@endtemplate}
 abstract interface class ErrorTrackingManager {
   /// Enables error tracking.
   ///
@@ -20,11 +18,8 @@ abstract interface class ErrorTrackingManager {
   Future<void> disableReporting();
 }
 
-/// {@template error_tracking_manager_base}
 /// A class that is responsible for managing Sentry error tracking.
-/// {@endtemplate}
 abstract base class ErrorTrackingManagerBase implements ErrorTrackingManager {
-  /// {@macro error_tracking_manager_base}
   ErrorTrackingManagerBase(this._logger);
 
   final RefinedLogger _logger;
@@ -33,8 +28,7 @@ abstract base class ErrorTrackingManagerBase implements ErrorTrackingManager {
   /// Catch only warnings and errors
   Stream<LogMessage> get _reportLogs => _logger.logs.where(_warnOrUp);
 
-  static bool _warnOrUp(LogMessage log) =>
-      log.level.severity >= LogLevel.warn.severity;
+  static bool _warnOrUp(LogMessage log) => log.level.severity >= LogLevel.warn.severity;
 
   @mustCallSuper
   @mustBeOverridden
@@ -65,11 +59,8 @@ abstract base class ErrorTrackingManagerBase implements ErrorTrackingManager {
   Future<void> report(LogMessage log);
 }
 
-/// {@template sentry_tracking_manager}
 /// A class that is responsible for managing Sentry error tracking.
-/// {@endtemplate}
 final class SentryTrackingManager extends ErrorTrackingManagerBase {
-  /// {@macro sentry_tracking_manager}
   SentryTrackingManager(
     super._logger, {
     required this.sentryDsn,

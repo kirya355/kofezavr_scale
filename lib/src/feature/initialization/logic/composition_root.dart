@@ -10,19 +10,14 @@ import 'package:kofezavr_scale/src/feature/settings/data/theme_datasource.dart';
 import 'package:kofezavr_scale/src/feature/settings/data/theme_mode_codec.dart';
 import 'package:kofezavr_scale/src/feature/settings/data/theme_repository.dart';
 
-/// {@template composition_root}
 /// A place where all dependencies are initialized.
-/// {@endtemplate}
 ///
-/// {@template composition_process}
 /// Composition of dependencies is a process of creating and configuring
 /// instances of classes that are required for the application to work.
 ///
 /// It is a good practice to keep all dependencies in one place to make it
 /// easier to manage them and to ensure that they are initialized only once.
-/// {@endtemplate}
 final class CompositionRoot {
-  /// {@macro composition_root}
   const CompositionRoot(this.config, this.logger);
 
   /// Application configuration

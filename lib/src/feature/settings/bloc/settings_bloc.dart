@@ -5,11 +5,8 @@ import 'package:kofezavr_scale/src/feature/app/model/app_theme.dart';
 import 'package:kofezavr_scale/src/feature/settings/data/locale_repository.dart';
 import 'package:kofezavr_scale/src/feature/settings/data/theme_repository.dart';
 
-/// {@template settings_bloc}
 /// A [Bloc] that handles the settings.
-/// {@endtemplate}
 final class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  /// {@macro settings_bloc}
   SettingsBloc({
     required LocaleRepository localeRepository,
     required ThemeRepository themeRepository,
@@ -88,12 +85,10 @@ final class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
 /// States for the [SettingsBloc].
 sealed class SettingsState {
   /// Idle state for the [SettingsBloc].
-  const factory SettingsState.idle({Locale? locale, AppTheme? appTheme}) =
-      _IdleSettingsState;
+  const factory SettingsState.idle({Locale? locale, AppTheme? appTheme}) = _IdleSettingsState;
 
   /// Processing state for the [SettingsBloc].
-  const factory SettingsState.processing({Locale? locale, AppTheme? appTheme}) =
-      _ProcessingSettingsState;
+  const factory SettingsState.processing({Locale? locale, AppTheme? appTheme}) = _ProcessingSettingsState;
 
   /// Error state for the [SettingsBloc].
   const factory SettingsState.error({
@@ -117,17 +112,14 @@ final class _IdleSettingsState extends SettingsState {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is _IdleSettingsState &&
-        other.locale == locale &&
-        other.appTheme == appTheme;
+    return other is _IdleSettingsState && other.locale == locale && other.appTheme == appTheme;
   }
 
   @override
   int get hashCode => Object.hash(locale, appTheme);
 
   @override
-  String toString() =>
-      'SettingsState.idle(locale: $locale, appTheme: $appTheme)';
+  String toString() => 'SettingsState.idle(locale: $locale, appTheme: $appTheme)';
 }
 
 final class _ProcessingSettingsState extends SettingsState {
@@ -137,17 +129,14 @@ final class _ProcessingSettingsState extends SettingsState {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is _ProcessingSettingsState &&
-        other.locale == locale &&
-        other.appTheme == appTheme;
+    return other is _ProcessingSettingsState && other.locale == locale && other.appTheme == appTheme;
   }
 
   @override
   int get hashCode => Object.hash(locale, appTheme);
 
   @override
-  String toString() =>
-      'SettingsState.processing(locale: $locale, appTheme: $appTheme)';
+  String toString() => 'SettingsState.processing(locale: $locale, appTheme: $appTheme)';
 }
 
 final class _ErrorSettingsState extends SettingsState {
@@ -164,10 +153,7 @@ final class _ErrorSettingsState extends SettingsState {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is _ErrorSettingsState &&
-        other.cause == cause &&
-        other.locale == locale &&
-        other.appTheme == appTheme;
+    return other is _ErrorSettingsState && other.cause == cause && other.locale == locale && other.appTheme == appTheme;
   }
 
   @override
@@ -183,12 +169,10 @@ sealed class SettingsEvent {
   const SettingsEvent();
 
   /// Event to update theme.
-  const factory SettingsEvent.updateTheme({required AppTheme appTheme}) =
-      _UpdateThemeSettingsEvent;
+  const factory SettingsEvent.updateTheme({required AppTheme appTheme}) = _UpdateThemeSettingsEvent;
 
   /// Event to update the locale.
-  const factory SettingsEvent.updateLocale({required Locale locale}) =
-      _UpdateLocaleSettingsEvent;
+  const factory SettingsEvent.updateLocale({required Locale locale}) = _UpdateLocaleSettingsEvent;
 }
 
 final class _UpdateThemeSettingsEvent extends SettingsEvent {

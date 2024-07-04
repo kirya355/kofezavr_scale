@@ -13,8 +13,7 @@ abstract interface class ThemeRepository {
 /// Theme repository implementation
 final class ThemeRepositoryImpl implements ThemeRepository {
   /// Create theme repository
-  const ThemeRepositoryImpl({required ThemeDataSource themeDataSource})
-      : _themeDataSource = themeDataSource;
+  const ThemeRepositoryImpl({required ThemeDataSource themeDataSource}) : _themeDataSource = themeDataSource;
 
   final ThemeDataSource _themeDataSource;
 

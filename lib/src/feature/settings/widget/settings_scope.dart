@@ -5,9 +5,7 @@ import 'package:kofezavr_scale/src/core/utils/extensions/context_extension.dart'
 import 'package:kofezavr_scale/src/feature/app/model/app_theme.dart';
 import 'package:kofezavr_scale/src/feature/settings/bloc/settings_bloc.dart';
 
-/// {@template theme_scope_controller}
 /// A controller that holds and operates the app theme.
-/// {@endtemplate}
 abstract interface class ThemeScopeController {
   /// Get the current [AppTheme].
   AppTheme get theme;
@@ -19,9 +17,7 @@ abstract interface class ThemeScopeController {
   void setThemeSeedColor(Color color);
 }
 
-/// {@template locale_scope_controller}
 /// A controller that holds and operates the app locale.
-/// {@endtemplate}
 abstract interface class LocaleScopeController {
   /// Get the current [Locale]
   Locale get locale;
@@ -30,11 +26,8 @@ abstract interface class LocaleScopeController {
   void setLocale(Locale locale);
 }
 
-/// {@template settings_scope_controller}
 /// A controller that holds and operates the app settings.
-/// {@endtemplate}
-abstract interface class SettingsScopeController
-    implements ThemeScopeController, LocaleScopeController {}
+abstract interface class SettingsScopeController implements ThemeScopeController, LocaleScopeController {}
 
 enum _SettingsScopeAspect {
   /// The theme aspect.
@@ -44,16 +37,13 @@ enum _SettingsScopeAspect {
   locale;
 }
 
-/// {@template settings_scope}
 /// Settings scope is responsible for handling settings-related stuff.
 ///
 /// For example, it holds facilities to change
 /// - theme seed color
 /// - theme mode
 /// - locale
-/// {@endtemplate}
 class SettingsScope extends StatefulWidget {
-  /// {@macro settings_scope}
   const SettingsScope({
     required this.child,
     required this.settingsBloc,
@@ -91,9 +81,7 @@ class SettingsScope extends StatefulWidget {
   State<SettingsScope> createState() => _SettingsScopeState();
 }
 
-/// State for widget SettingsScope
-class _SettingsScopeState extends State<SettingsScope>
-    implements SettingsScopeController {
+class _SettingsScopeState extends State<SettingsScope> implements SettingsScopeController {
   @override
   void setLocale(Locale locale) {
     widget.settingsBloc.add(SettingsEvent.updateLocale(locale: locale));
@@ -114,16 +102,13 @@ class _SettingsScopeState extends State<SettingsScope>
       );
 
   @override
-  Locale get locale =>
-      widget.settingsBloc.state.locale ?? Localization.computeDefaultLocale();
+  Locale get locale => widget.settingsBloc.state.locale ?? Localization.computeDefaultLocale();
 
   @override
-  AppTheme get theme =>
-      widget.settingsBloc.state.appTheme ?? AppTheme.defaultTheme;
+  AppTheme get theme => widget.settingsBloc.state.appTheme ?? AppTheme.defaultTheme;
 
   @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<SettingsBloc, SettingsState>(
+  Widget build(BuildContext context) => BlocBuilder<SettingsBloc, SettingsState>(
         bloc: widget.settingsBloc,
         builder: (context, state) => _InheritedSettingsScope(
           controller: this,
@@ -144,8 +129,7 @@ class _InheritedSettingsScope extends InheritedModel<_SettingsScopeAspect> {
   final SettingsState state;
 
   @override
-  bool updateShouldNotify(_InheritedSettingsScope oldWidget) =>
-      state != oldWidget.state;
+  bool updateShouldNotify(_InheritedSettingsScope oldWidget) => state != oldWidget.state;
 
   @override
   bool updateShouldNotifyDependent(

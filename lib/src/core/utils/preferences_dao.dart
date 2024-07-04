@@ -1,16 +1,11 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// {@template preferences_dao}
 /// Class that provides seamless access to the shared preferences.
 ///
 /// Inspired by https://pub.dev/packages/typed_preferences
-/// {@endtemplate}
 abstract base class PreferencesDao {
+  const PreferencesDao({required SharedPreferences sharedPreferences}) : _sharedPreferences = sharedPreferences;
   final SharedPreferences _sharedPreferences;
-
-  /// {@macro preferences_dao}
-  const PreferencesDao({required SharedPreferences sharedPreferences})
-      : _sharedPreferences = sharedPreferences;
 
   /// Obtain [bool] entry from the preferences.
   PreferencesEntry<bool> boolEntry(String key) => TypedEntry<bool>(
@@ -37,19 +32,15 @@ abstract base class PreferencesDao {
       );
 
   /// Obtain [Iterable<String>] entry from the preferences.
-  PreferencesEntry<Iterable<String>> iterableStringEntry(String key) =>
-      TypedEntry<Iterable<String>>(
+  PreferencesEntry<Iterable<String>> iterableStringEntry(String key) => TypedEntry<Iterable<String>>(
         key: key,
         sharedPreferences: _sharedPreferences,
       );
 }
 
-/// {@template preferences_entry}
 /// [PreferencesEntry] describes a single entry in the preferences.
 /// This is used to get and set values in the preferences.
-/// {@endtemplate}
 abstract base class PreferencesEntry<T extends Object> {
-  /// {@macro preferences_entry}
   const PreferencesEntry();
 
   /// The key of the entry in the preferences.
@@ -65,11 +56,9 @@ abstract base class PreferencesEntry<T extends Object> {
   Future<void> remove();
 
   /// Set the value of the entry in the preferences if the value is not null.
-  Future<void> setIfNullRemove(T? value) =>
-      value == null ? remove() : set(value);
+  Future<void> setIfNullRemove(T? value) => value == null ? remove() : set(value);
 }
 
-/// {@template typed_entry}
 /// A [PreferencesEntry] that is typed to a specific type [T].
 ///
 /// You can also create subclasses of this class to create adapters for custom
@@ -98,9 +87,7 @@ abstract base class PreferencesEntry<T extends Object> {
 ///  );
 /// }
 /// ```
-/// {@endtemplate}
 base class TypedEntry<T extends Object> extends PreferencesEntry<T> {
-  /// {@macro typed_entry}
   TypedEntry({
     required SharedPreferences sharedPreferences,
     required this.key,

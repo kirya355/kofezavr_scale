@@ -10,11 +10,8 @@ import 'package:kofezavr_scale/src/feature/app/widget/app.dart';
 import 'package:kofezavr_scale/src/feature/initialization/logic/composition_root.dart';
 import 'package:kofezavr_scale/src/feature/initialization/widget/initialization_failed_app.dart';
 
-/// {@template app_runner}
 /// A class which is responsible for initialization and running the app.
-/// {@endtemplate}
 final class AppRunner {
-  /// {@macro app_runner}
   const AppRunner();
 
   /// Start the initialization and in case of success run application
@@ -26,8 +23,7 @@ final class AppRunner {
 
     // Override logging
     FlutterError.onError = logger.logFlutterError;
-    WidgetsBinding.instance.platformDispatcher.onError =
-        logger.logPlatformDispatcherError;
+    WidgetsBinding.instance.platformDispatcher.onError = logger.logPlatformDispatcherError;
 
     // Setup bloc observer and transformer
     Bloc.observer = AppBlocObserver(logger);

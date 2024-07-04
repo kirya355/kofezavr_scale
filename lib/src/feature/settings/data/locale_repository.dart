@@ -14,8 +14,7 @@ abstract interface class LocaleRepository {
 /// Locale repository implementation
 final class LocaleRepositoryImpl implements LocaleRepository {
   /// Create locale repository
-  const LocaleRepositoryImpl({required LocaleDataSource localeDataSource})
-      : _localeDataSource = localeDataSource;
+  const LocaleRepositoryImpl({required LocaleDataSource localeDataSource}) : _localeDataSource = localeDataSource;
 
   final LocaleDataSource _localeDataSource;
 
